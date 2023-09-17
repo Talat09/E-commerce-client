@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { CgClose, CgMenu } from "react-icons/cg";
+
 const Nav = () => {
   const [menuIcon, setMenuIcon] = useState(false);
   const Nav = styled.nav`
@@ -165,7 +166,7 @@ const Nav = () => {
           <li>
             <NavLink
               to="/"
-              className="navbar-link home-link"
+              className="navbar-link home-link "
               onClick={() => setMenuIcon(false)}
             >
               Home
