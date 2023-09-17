@@ -18,7 +18,7 @@ const MainHeader = styled.header`
   height: 10rem;
   background-color: ${({ theme }) => theme.colors.bg};
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   position: relative;
 
