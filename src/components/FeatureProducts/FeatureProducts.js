@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Product from "../Product/Product";
 const FeatureProducts = () => {
   const { isLoading, featureProducts } = useProductContext();
-  console.log("feature products", featureProducts);
+  // console.log("feature products", featureProducts);
   if (isLoading) {
     return <span className="loader"></span>;
   }

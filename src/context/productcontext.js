@@ -6,6 +6,7 @@ import axios from "axios";
 import reducer from "../reducer/productReducer";
 const AppContext = createContext();
 const API = "https://api.pujakaitem.com/api/products";
+
 const initialState = {
   isLoading: false,
   isError: false,
@@ -21,6 +22,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: "SET_LOADING" });
     try {
       const res = await axios.get(url);
+      // console.log(res);
       const products = await res.data;
       // console.log("products", products);
       dispatch({ type: "SET_API_DATA", payload: products });
@@ -34,8 +36,8 @@ const AppProvider = ({ children }) => {
     try {
       const res = await axios.get(url);
       const singleProduct = await res.data;
+
       dispatch({ type: "SET_SINGLE_PRODUCT", payload: singleProduct });
-      console.log(singleProduct);
     } catch (error) {
       dispatch({ type: "SET_SINGLE_ERROR" });
     }
