@@ -1,13 +1,14 @@
 import React from "react";
 import { useProductContext } from "../../context/productcontext";
-import "./FeatureProducts.css";
+
 import styled from "styled-components";
 import Product from "../Product/Product";
+import Loading from "../Loading/Loading";
 const FeatureProducts = () => {
   const { isLoading, featureProducts } = useProductContext();
   // console.log("feature products", featureProducts);
   if (isLoading) {
-    return <span className="loader"></span>;
+    return <Loading></Loading>;
   }
   return (
     <Wrapper className="section">

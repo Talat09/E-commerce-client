@@ -1,8 +1,15 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useProductContext } from "../../context/productcontext";
 import { useParams } from "react-router-dom";
-
+import Loading from "../Loading/Loading";
+import Container from "../../styles/Container";
+import MyImage from "../MyImage/MyImage";
+import PageNavigation from "../PageNavigation/PageNavigation";
+import FormatPrice from "../../Helpers/FormatPrice";
+import { TbTruckDelivery, TbReplace } from "react-icons/tb";
+import { MdSecurity } from "react-icons/md";
 const API = "https://api.pujakaitem.com/api/products";
 
 const SingleProduct = () => {
@@ -19,14 +26,76 @@ const SingleProduct = () => {
     stock,
     stars,
     reviews,
+    image,
   } = singleProduct;
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
   }, []);
-  console.log("single product", singleProduct);
+  if (isSingleLoading) {
+    return <Loading></Loading>;
+  }
+  // console.log("single product", singleProduct);
   return (
     <Wrapper>
-      <h2>{name}</h2>
+      <PageNavigation title={name} />
+      <Container className="container">
+        <div className="grid grid-two-column">
+          {/* product image */}
+          <div className="product_images">
+            <MyImage img={image}></MyImage>
+          </div>
+          {/* product data */}
+          <div className="product-data">
+            <h2>{name}</h2>
+            <p>{stars}</p>
+            <p>{reviews} reviews</p>
+            <p className="product-data-price">
+              MRP:
+              <del>
+                <FormatPrice price={price + 250000} />
+              </del>
+            </p>
+            <p className="product-data-price product-data-real-price">
+              Deal of the Day: <FormatPrice price={price} />
+            </p>
+            <p>{description}</p>
+
+            <div className="product-data-warranty">
+              <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon" />
+                <p>Free Delivery</p>
+              </div>
+
+              <div className="product-warranty-data">
+                <TbReplace className="warranty-icon" />
+                <p>30 Days Replacement</p>
+              </div>
+
+              <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon" />
+                <p>Thapa Delivered </p>
+              </div>
+
+              <div className="product-warranty-data">
+                <MdSecurity className="warranty-icon" />
+                <p>2 Year Warranty </p>
+              </div>
+            </div>
+            <div className="product-data-info">
+              <p>
+                Available:
+                <span> {stock > 0 ? "In Stock" : "Not Available"}</span>
+              </p>
+              <p>
+                ID : <span> {id} </span>
+              </p>
+              <p>
+                Brand :<span> {company} </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </Container>
     </Wrapper>
   );
 };
