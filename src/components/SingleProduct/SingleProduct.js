@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useProductContext } from "../../context/productcontext";
 
 const Wrapper = styled.section`
   .container {
@@ -75,7 +76,9 @@ const Wrapper = styled.section`
 `;
 
 const SingleProduct = () => {
-  return <Wrapper>{/* Your JSX content here */}</Wrapper>;
+  const { singleProduct } = useProductContext();
+  console.log(singleProduct);
+  return <Wrapper>Single product page</Wrapper>;
 };
 
 export default SingleProduct;
