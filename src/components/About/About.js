@@ -1,7 +1,10 @@
 import React from "react";
 import HeroSection from "../HeroSection/HeroSection";
+import { useProductContext } from "../../context/productcontext";
 
 const About = () => {
+  const { name } = useProductContext();
+  console.log(name);
   const data = {
     name: "Juhi'S ECommerce",
     description:
