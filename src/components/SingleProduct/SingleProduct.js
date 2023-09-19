@@ -10,6 +10,8 @@ import PageNavigation from "../PageNavigation/PageNavigation";
 import FormatPrice from "../../Helpers/FormatPrice";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
+import { BiSolidStar, BiSolidStarHalf } from "react-icons/bi";
+import Star from "../Star/Star";
 const API = "https://api.pujakaitem.com/api/products";
 
 const SingleProduct = () => {
@@ -28,12 +30,14 @@ const SingleProduct = () => {
     reviews,
     image,
   } = singleProduct;
+
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
   }, []);
   if (isSingleLoading) {
     return <Loading></Loading>;
   }
+
   // console.log("single product", singleProduct);
   return (
     <Wrapper>
@@ -47,8 +51,8 @@ const SingleProduct = () => {
           {/* product data */}
           <div className="product-data">
             <h2>{name}</h2>
-            <p>{stars}</p>
-            <p>{reviews} reviews</p>
+            <Star stars={stars} reviews={reviews}></Star>
+            {/* <p>{reviews} reviews</p> */}
             <p className="product-data-price">
               MRP:
               <del>
