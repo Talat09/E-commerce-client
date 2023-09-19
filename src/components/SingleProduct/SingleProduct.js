@@ -12,6 +12,7 @@ import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import { MdSecurity } from "react-icons/md";
 import { BiSolidStar, BiSolidStarHalf } from "react-icons/bi";
 import Star from "../Star/Star";
+import AddToCart from "../AddToCart/AddToCart";
 const API = "https://api.pujakaitem.com/api/products";
 
 const SingleProduct = () => {
@@ -97,6 +98,8 @@ const SingleProduct = () => {
                 Brand :<span> {company} </span>
               </p>
             </div>
+            <hr />
+            {stock > 0 && <AddToCart product={singleProduct}></AddToCart>}
           </div>
         </div>
       </Container>

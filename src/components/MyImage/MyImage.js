@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const MyImage = ({ imgs = [{ url: "" }] }) => {
-  console.log(imgs);
+  // console.log(imgs);
   const [selectedImg, setSelectedImg] = useState(imgs[0]);
 
   const handleImageClick = (url) => {

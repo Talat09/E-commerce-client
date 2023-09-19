@@ -18,7 +18,7 @@ const Star = ({ stars, reviews }) => {
       </span>
     );
   });
-  console.log(stars, reviews);
+  //   console.log(stars, reviews);
   return (
     <Wrapper>
       <div className="icon-style">
