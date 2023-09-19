@@ -42,7 +42,7 @@ const SingleProduct = () => {
         <div className="grid grid-two-column">
           {/* product image */}
           <div className="product_images">
-            <MyImage img={image}></MyImage>
+            <MyImage imgs={image}></MyImage>
           </div>
           {/* product data */}
           <div className="product-data">
@@ -102,6 +102,10 @@ const SingleProduct = () => {
 const Wrapper = styled.section`
   .container {
     padding: 9rem 0;
+  }
+  .product_images {
+    display: flex;
+    align-items: center;
   }
   .product-data {
     display: flex;
