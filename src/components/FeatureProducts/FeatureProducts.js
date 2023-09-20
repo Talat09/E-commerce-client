@@ -14,7 +14,7 @@ const FeatureProducts = () => {
     <Wrapper className="section">
       <div className="container">
         <div className="intro-data">Check Now!</div>
-        <div className="common-heading">Our Feature Services</div>
+        <div className="common-heading">Our Feature Product</div>
         <div className="grid grid-three-column">
           {featureProducts.map((product) => {
             return <Product product={product} key={product.id} />;
