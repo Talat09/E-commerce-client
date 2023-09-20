@@ -98,26 +98,26 @@ const Wrapper = styled.section`
     }
 
     .card-data--price {
-      color: ${({ theme }) => theme.colors.helper};
+      color: #004aad;
     }
 
     .btn {
       margin: 2rem auto;
       background-color: rgb(0 0 0 / 0%);
-      border: 0.1rem solid rgb(98 84 243);
+      border: 0.1rem solid #004aad;
       display: flex;
       justify-content: center;
       align-items: center;
 
       &:hover {
-        background-color: rgb(98 84 243);
+        background-color: #004aad;
       }
 
       &:hover a {
         color: #fff;
       }
       a {
-        color: rgb(98 84 243);
+        color: #004aad;
         font-size: 1.4rem;
       }
     }
