@@ -110,14 +110,14 @@ const filterReducer = (state, action) => {
           return curElem.name.toLowerCase().includes(text);
         });
       }
-      if (category) {
+      if (category !== "all") {
         tempFilterProduct = tempFilterProduct.filter((curElem) => {
           return curElem.category === category;
         });
       }
-      if (company) {
+      if (company !== "all") {
         tempFilterProduct = tempFilterProduct.filter((curElem) => {
-          return curElem.company === company;
+          return curElem.company.toLowerCase() === company.toLowerCase();
         });
       }
       return {
