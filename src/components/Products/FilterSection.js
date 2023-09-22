@@ -5,8 +5,20 @@ import { useFilterContext } from "../../context/filterContext";
 const FilterSection = () => {
   const {
     filters: { text },
+    all_products,
     updateFilterValue,
   } = useFilterContext();
+  //To get the unique data of each field
+  const getUniqueData = (data, property) => {
+    let newData = data.map((curElem) => {
+      return curElem[property];
+    });
+    newData = ["All", ...new Set(newData)]; //for unique data
+    console.log(newData);
+  };
+  //we need unique data
+  const categoriOnlyData = getUniqueData(all_products, "category");
+  // console.log(categoriOnlyData);
   return (
     <Wrapper>
       <div className="filter-search">
