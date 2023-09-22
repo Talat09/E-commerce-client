@@ -8,25 +8,6 @@ const Sort = () => {
 
   return (
     <Wrapper className="sort-section">
-      {/* 1st column */}
-      <div className="sorting-list--grid">
-        <button
-          className={grid_view ? "active sort-btn" : "sort-btn"}
-          onClick={setGridView}
-        >
-          <BsFillGridFill className="icon" />
-        </button>
-        <button
-          className={!grid_view ? "active sort-btn" : "sort-btn"}
-          onClick={setListView}
-        >
-          <BsList className="icon" />
-        </button>
-      </div>
-      {/* 2nd column */}
-      <div className="product-data">
-        <p>{filter_products.length} Products Available</p>
-      </div>
       {/* 3rd column */}
       <div className="sort-selection">
         <form action="#">
@@ -45,6 +26,26 @@ const Sort = () => {
             <option value="z-a">Price(z-a)</option>
           </select>
         </form>
+      </div>
+
+      {/* 2nd column */}
+      <div className="product-data">
+        <p>{filter_products.length} Products Available</p>
+      </div>
+      {/* 1st column */}
+      <div className="sorting-list--grid">
+        <button
+          className={grid_view ? "active sort-btn" : "sort-btn"}
+          onClick={setGridView}
+        >
+          <BsFillGridFill className="icon" />
+        </button>
+        <button
+          className={!grid_view ? "active sort-btn" : "sort-btn"}
+          onClick={setListView}
+        >
+          <BsList className="icon" />
+        </button>
       </div>
     </Wrapper>
   );
