@@ -13,7 +13,7 @@ const FilterSection = () => {
     let newData = data.map((curElem) => {
       return curElem[property];
     });
-    return (newData = ["All", ...new Set(newData)]); //for unique data
+    return (newData = ["all", ...new Set(newData)]); //for unique data
     // console.log(newData);
   };
   //we need unique data
