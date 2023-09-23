@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useFilterContext } from "../../context/filterContext";
 import { FaCheck } from "react-icons/fa";
@@ -31,7 +31,7 @@ const FilterSection = () => {
   const companyOnlyData = getUniqueData(all_products, "company");
 
   const colorsOnlyData = getUniqueData(all_products, "colors");
-  console.log("colorsOnlyData:", colorsOnlyData);
+  // console.log("colorsOnlyData:", colorsOnlyData);
 
   return (
     <Wrapper>

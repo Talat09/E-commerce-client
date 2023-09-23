@@ -4,7 +4,7 @@ const filterReducer = (state, action) => {
       let priceArr = action.payload.map((curElem) => curElem.price); //filter price
       //1st way
       let maxPrice = Math.max(...priceArr);
-      console.log(" 1st way The maximum number is:", maxPrice);
+      // console.log(" 1st way The maximum number is:", maxPrice);
       //2nd way
       // console.log("2nd way:", Math.max.apply(null, priceArr));
       //3rd way
