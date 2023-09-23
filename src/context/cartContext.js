@@ -28,8 +28,14 @@ const CartProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("JuhiCart", JSON.stringify(state.cart));
   }, [state.cart]);
+  //to Clear Cart
+  const clearCart = () => {
+    dispatch({ type: "CLEAR_CART" });
+  };
   return (
-    <CartContext.Provider value={{ ...state, addToCart, removeItem }}>
+    <CartContext.Provider
+      value={{ ...state, addToCart, removeItem, clearCart }}
+    >
       {children}
     </CartContext.Provider>
   );
