@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useFilterContext } from "../../context/filterContext";
 import { FaCheck } from "react-icons/fa";
+import FormatPrice from "../../Helpers/FormatPrice";
+import Button from "../../styles/Button";
 const FilterSection = () => {
   const {
-    filters: { text, category, color },
+    filters: { text, category, color, price, maxPrice, minPrice },
     all_products,
+
     updateFilterValue,
+    clearFilters,
   } = useFilterContext();
+
   //To get the unique data of each field
   const getUniqueData = (data, property) => {
     let newData = data.map((curElem) => {
@@ -27,6 +32,7 @@ const FilterSection = () => {
 
   const colorsOnlyData = getUniqueData(all_products, "colors");
   console.log("colorsOnlyData:", colorsOnlyData);
+
   return (
     <Wrapper>
       <div className="filter-search">
@@ -114,6 +120,25 @@ const FilterSection = () => {
             );
           })}
         </div>
+      </div>
+      <div className="filter_price">
+        <h3>Price</h3>
+        <p>
+          <FormatPrice price={price}></FormatPrice>
+        </p>
+        <input
+          type="range"
+          name="price"
+          value={price}
+          min={minPrice}
+          max={maxPrice}
+          onChange={updateFilterValue}
+        />
+      </div>
+      <div className="filter-clear">
+        <Button className="btn" onClick={clearFilters}>
+          Clear Filters
+        </Button>
       </div>
     </Wrapper>
   );
@@ -221,8 +246,9 @@ const Wrapper = styled.section`
   }
 
   .filter-clear .btn {
-    background-color: #ec7063;
-    color: #000;
+    background-color: rgb(98 189 252);
+    color: #fff;
+    border-radius: 10px;
   }
 `;
 export default FilterSection;
