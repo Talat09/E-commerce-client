@@ -17,6 +17,16 @@ const cartReducer = (state, action) => {
       cart: [...state.cart, newCartProduct],
     };
   }
+  if (action.type === "REMOVE_ITEM") {
+    let updatedCart = state.cart.filter(
+      (curElem) => curElem.id !== action.payload //jei id ta match hoise oita chara baki gula return korbe
+    );
+
+    return {
+      ...state,
+      cart: updatedCart,
+    };
+  }
   return state;
 };
 
