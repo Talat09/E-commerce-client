@@ -160,7 +160,7 @@ const Nav = () => {
       }
     }
   `;
-  const { cart } = useCartContext();
+  const { total_item } = useCartContext();
   return (
     <Nav>
       <div className={menuIcon ? "navbar active" : "navbar"}>
@@ -204,7 +204,7 @@ const Nav = () => {
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <BsFillBagPlusFill className="cart-trolley" />
-              <span className="cart-total--item">{cart.length}</span>
+              <span className="cart-total--item">{total_item}</span>
             </NavLink>
           </li>
         </ul>

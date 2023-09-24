@@ -13,6 +13,7 @@ const initialState = {
   //   cart: [],
   cart: getLocalStorageData(),
   total_item: "",
+  total_price: "",
   shipping_fee: 50000,
 };
 const CartProvider = ({ children }) => {
@@ -26,6 +27,9 @@ const CartProvider = ({ children }) => {
   //add data into the local storage
   //get and set
   useEffect(() => {
+    //cart icon quantity
+    dispatch({ type: "CART_TOTAL_ITEM" });
+    //local storage
     localStorage.setItem("JuhiCart", JSON.stringify(state.cart));
   }, [state.cart]);
   //to Clear Cart
