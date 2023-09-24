@@ -29,6 +29,8 @@ const CartProvider = ({ children }) => {
   useEffect(() => {
     //cart icon quantity
     dispatch({ type: "CART_TOTAL_ITEM" });
+    //cart total price
+    dispatch({ type: "CART_TOTAL_PRICE" });
     //local storage
     localStorage.setItem("JuhiCart", JSON.stringify(state.cart));
   }, [state.cart]);
