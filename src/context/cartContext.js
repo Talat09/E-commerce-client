@@ -32,9 +32,24 @@ const CartProvider = ({ children }) => {
   const clearCart = () => {
     dispatch({ type: "CLEAR_CART" });
   };
+  //increment and decrement the product
+  const setDecrement = (id) => {
+    dispatch({ type: "SET_DECREMENT", payload: id });
+  };
+  const setIncrement = (id) => {
+    dispatch({ type: "SET_INCREMENT", payload: id });
+  };
+
   return (
     <CartContext.Provider
-      value={{ ...state, addToCart, removeItem, clearCart }}
+      value={{
+        ...state,
+        addToCart,
+        removeItem,
+        clearCart,
+        setDecrement,
+        setIncrement,
+      }}
     >
       {children}
     </CartContext.Provider>
