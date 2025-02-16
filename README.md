@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2a321524416e4be78219959f9e691d6974107633
 # Juhis Fashion E-commerce 🛒
 
 Welcome to **Juhis Fashion**, an e-commerce platform for buying and filtering tech products like mobiles, laptops, accessories, watches, and more. The project is built using React for the frontend, Styled-components for design, Axios for API requests, and Auth0 for authentication. The contact form is handled via the Formspree API.
@@ -24,6 +27,7 @@ Welcome to **Juhis Fashion**, an e-commerce platform for buying and filtering te
 
 
 
+<<<<<<< HEAD
 =======
 # React + Vite
 
@@ -34,3 +38,5 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 >>>>>>> f127a72 (added remove image for hero section and logo)
+=======
+>>>>>>> 2a321524416e4be78219959f9e691d6974107633
