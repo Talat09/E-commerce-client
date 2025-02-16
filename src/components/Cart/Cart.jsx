@@ -3,10 +3,13 @@ import { useCartContext } from "../../context/cartContext";
 import CartItem from "./CartItem";
 import { NavLink } from "react-router-dom";
 import Button from "../../styles/Button";
+import FormatPrice from "../../Helpers/FormatPrice";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Cart = () => {
-  const { cart, clearCart } = useCartContext();
-  console.log(cart);
+  const { isAuthenticated, user } = useAuth0();
+  const { cart, clearCart, total_price, shipping_fee } = useCartContext();
+  // console.log(cart);
   if (cart.length === 0) {
     return (
       <EmptyDiv>
@@ -17,6 +20,12 @@ const Cart = () => {
   return (
     <Wrapper>
       <div className="container">
+        {isAuthenticated && (
+          <div className="cart-user--profile">
+            <img src={user.profile} alt={user.name} />
+            <h2 className="cart-user--name">{user.name}</h2>
+          </div>
+        )}
         <div className="cart_heading grid grid-five-column">
           <p>Item</p>
           <p className="cart-hide">Price</p>
@@ -38,6 +47,30 @@ const Cart = () => {
           <Button className="btn btn-clear" onClick={clearCart}>
             Clear Cart
           </Button>
+        </div>
+        {/* order total amount */}
+        <div className="order-total--amount">
+          <div className="order-total--subdata">
+            <div>
+              <p>Subtotal:</p>
+              <p>
+                <FormatPrice price={total_price} />
+              </p>
+            </div>
+            <div>
+              <p>Shipping fee:</p>
+              <p>
+                <FormatPrice price={shipping_fee} />
+              </p>
+            </div>
+            <hr />
+            <div>
+              <p>Order total:</p>
+              <p>
+                <FormatPrice price={shipping_fee + total_price} />
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </Wrapper>

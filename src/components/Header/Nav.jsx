@@ -1,18 +1,32 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { BsFillBagPlusFill } from "react-icons/bs";
 import { CgClose, CgMenu } from "react-icons/cg";
 import { useCartContext } from "../../context/cartContext";
+import { useAuth0 } from "@auth0/auth0-react";
+import Button from "../../styles/Button";
+import Loading from "../Loading/Loading";
+// import Loading from "../Loading/Loading";
 
 const Nav = () => {
+  const { loginWithRedirect, logout, isAuthenticated, user, isLoading } =
+    useAuth0();
   const [menuIcon, setMenuIcon] = useState(false);
   const Nav = styled.nav`
     .navbar-lists {
       display: flex;
       gap: 4.8rem;
       align-items: center;
-
+      .profile-name {
+        color: #004aad;
+        font-size: 1.8rem;
+      }
+      .profile-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
       .navbar-link {
         &:link,
         &:visited {
@@ -160,7 +174,10 @@ const Nav = () => {
       }
     }
   `;
-  const { cart } = useCartContext();
+  const { total_item } = useCartContext();
+  if (isLoading) {
+    return <Loading></Loading>;
+  }
   return (
     <Nav>
       <div className={menuIcon ? "navbar active" : "navbar"}>
@@ -201,10 +218,35 @@ const Nav = () => {
               About
             </NavLink>
           </li>
+          {isAuthenticated && <p className="profile-name">{user?.name}</p>}
+          {isAuthenticated && (
+            <img className="profile-img" src={user?.picture} alt={user?.name} />
+          )}
+
+          {isAuthenticated ? (
+            <div>
+              <li>
+                <Button
+                  onClick={() =>
+                    logout({
+                      logoutParams: { returnTo: window.location.origin },
+                    })
+                  }
+                >
+                  Log Out
+                </Button>
+              </li>
+            </div>
+          ) : (
+            <li>
+              <Button onClick={() => loginWithRedirect()}>Log In</Button>
+            </li>
+          )}
+
           <li>
             <NavLink to="/cart" className="navbar-link cart-trolley--link">
               <BsFillBagPlusFill className="cart-trolley" />
-              <span className="cart-total--item">{cart.length}</span>
+              <span className="cart-total--item">{total_item}</span>
             </NavLink>
           </li>
         </ul>
